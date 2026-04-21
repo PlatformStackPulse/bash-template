@@ -6,7 +6,7 @@
 #   ./src/main.sh hello --name "Alice"
 
 hello_usage() {
-    cat << EOF
+    cat <<EOF
 Usage: $(basename "$0") hello [OPTIONS]
 
 Greet someone. This is an example command — replace it with your own.
@@ -22,11 +22,11 @@ hello_run() {
 
     while [[ $# -gt 0 ]]; do
         case "$1" in
-            -n|--name)
+            -n | --name)
                 name="$2"
                 shift 2
                 ;;
-            -h|--help)
+            -h | --help)
                 hello_usage
                 return 0
                 ;;

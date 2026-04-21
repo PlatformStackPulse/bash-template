@@ -16,14 +16,19 @@ SRC_DIR="$SCRIPT_DIR"
 LIB_DIR="$PROJECT_ROOT/lib"
 
 # Source libraries
+# shellcheck source=../lib/logging.sh
 source "$LIB_DIR/logging.sh"
+# shellcheck source=../lib/config.sh
 source "$LIB_DIR/config.sh"
+# shellcheck source=../lib/errors.sh
 source "$LIB_DIR/errors.sh"
+# shellcheck source=../lib/utils.sh
 source "$LIB_DIR/utils.sh"
+# shellcheck source=../lib/version.sh
 source "$LIB_DIR/version.sh"
 
 main_usage() {
-    cat << EOF
+    cat <<EOF
 Usage: $(basename "$0") [COMMAND] [OPTIONS]
 
 A production-ready bash tool template.
@@ -45,15 +50,15 @@ main() {
     # Parse global options before command dispatch
     while [[ $# -gt 0 ]]; do
         case "$1" in
-            -h|--help)
+            -h | --help)
                 main_usage
                 exit 0
                 ;;
-            -v|--version)
+            -v | --version)
                 version_print_full
                 exit 0
                 ;;
-            -V|--verbose)
+            -V | --verbose)
                 VERBOSE="true"
                 export VERBOSE
                 shift
@@ -82,6 +87,7 @@ main() {
     case "$command" in
         hello)
             shift
+            # shellcheck source=commands/hello.sh
             source "$SRC_DIR/commands/hello.sh"
             hello_run "$@"
             ;;

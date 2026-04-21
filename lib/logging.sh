@@ -37,7 +37,7 @@ fi
 
 _log_to_file() {
     if [[ -n "${LOG_FILE:-}" ]]; then
-        echo "$(date -u '+%Y-%m-%dT%H:%M:%SZ') $*" >> "$LOG_FILE"
+        echo "$(date -u '+%Y-%m-%dT%H:%M:%SZ') $*" >>"$LOG_FILE"
     fi
 }
 

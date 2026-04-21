@@ -47,7 +47,7 @@ coverage: test ## Run tests with coverage (via kcov if available)
 		echo "Coverage report: coverage/index.html"; \
 	else \
 		echo "kcov not installed. Tests passed but no coverage report."; \
-		echo "Install kcov for coverage: https://github.com/SimonKagworthy/kcov"; \
+		echo "Install kcov for coverage: https://github.com/SimonKagstrom/kcov"; \
 	fi
 
 clean: ## Clean build artifacts

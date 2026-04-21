@@ -11,13 +11,21 @@
 readonly _ERRORS_SH_LOADED=1
 
 # Standard error codes (10-29 reserved for application errors)
+# shellcheck disable=SC2034
 readonly ERR_INVALID_INPUT=10
+# shellcheck disable=SC2034
 readonly ERR_NOT_FOUND=11
+# shellcheck disable=SC2034
 readonly ERR_PERMISSION=12
+# shellcheck disable=SC2034
 readonly ERR_TIMEOUT=13
+# shellcheck disable=SC2034
 readonly ERR_CONFIGURATION=14
+# shellcheck disable=SC2034
 readonly ERR_DEPENDENCY=15
+# shellcheck disable=SC2034
 readonly ERR_CONFLICT=16
+# shellcheck disable=SC2034
 readonly ERR_INTEGRATION=17
 
 error_message() {
@@ -31,7 +39,7 @@ error_message() {
         15) echo "Missing dependency" ;;
         16) echo "Conflict" ;;
         17) echo "Integration error" ;;
-        *)  echo "Unknown error (code: $code)" ;;
+        *) echo "Unknown error (code: $code)" ;;
     esac
 }
 

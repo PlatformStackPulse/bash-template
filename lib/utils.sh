@@ -99,7 +99,7 @@ confirm() {
 
     read -r -p "$prompt [y/N] " reply
     case "$reply" in
-        [yY][eE][sS]|[yY]) return 0 ;;
+        [yY][eE][sS] | [yY]) return 0 ;;
         *) return 1 ;;
     esac
 }

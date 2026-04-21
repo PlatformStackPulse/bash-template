@@ -40,11 +40,7 @@ setup() {
 }
 
 @test "log_debug outputs when VERBOSE is true" {
-    export VERBOSE="true"
-    # Re-source to reset the guard
-    unset _LOGGING_SH_LOADED
-    source "$PROJECT_ROOT/lib/logging.sh"
-    run log_debug "visible"
+    run bash -c 'export VERBOSE="true"; export NO_COLOR=1; source "$1/lib/logging.sh"; log_debug "visible"' -- "$PROJECT_ROOT"
     [ "$status" -eq 0 ]
     [[ "$output" == *"visible"* ]]
 }
@@ -52,11 +48,7 @@ setup() {
 @test "log_info writes to LOG_FILE when set" {
     local tmpfile
     tmpfile=$(mktemp)
-    export LOG_FILE="$tmpfile"
-    # Re-source to reset the guard
-    unset _LOGGING_SH_LOADED
-    source "$PROJECT_ROOT/lib/logging.sh"
-    log_info "file log test"
+    bash -c 'export LOG_FILE="$1"; export NO_COLOR=1; source "$2/lib/logging.sh"; log_info "file log test"' -- "$tmpfile" "$PROJECT_ROOT"
     grep -q "file log test" "$tmpfile"
     rm -f "$tmpfile"
 }

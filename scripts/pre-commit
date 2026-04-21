@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # scripts/pre-commit — Git pre-commit hook
-# Validates commit messages follow Conventional Commits format
-# Also runs ShellCheck on staged .sh files
+# Runs ShellCheck on staged .sh files
 
 set -euo pipefail
 
@@ -15,26 +14,5 @@ if [[ -n "$STAGED_SH_FILES" ]]; then
         echo "ShellCheck passed"
     else
         echo "Warning: ShellCheck not installed, skipping lint"
-    fi
-fi
-
-# Validate commit message format (Conventional Commits)
-COMMIT_MSG_FILE="$1"
-
-if [[ -n "${COMMIT_MSG_FILE:-}" && -f "$COMMIT_MSG_FILE" ]]; then
-    COMMIT_MSG=$(head -1 "$COMMIT_MSG_FILE")
-    PATTERN='^(feat|fix|docs|style|refactor|perf|test|chore|build|ci|revert)(\(.+\))?!?:\s.{1,}$'
-
-    if ! [[ "$COMMIT_MSG" =~ $PATTERN ]]; then
-        echo "ERROR: Commit message does not follow Conventional Commits format."
-        echo ""
-        echo "Expected: <type>(<scope>): <description>"
-        echo "Example:  feat: add new feature"
-        echo "Example:  fix(parser): handle edge case"
-        echo ""
-        echo "Types: feat, fix, docs, style, refactor, perf, test, chore, build, ci, revert"
-        echo ""
-        echo "Your message: $COMMIT_MSG"
-        exit 1
     fi
 fi

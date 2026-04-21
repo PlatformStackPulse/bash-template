@@ -28,7 +28,7 @@ config_load() {
 
     # Validate boolean
     case "$DEBUG" in
-        true|false) ;;
+        true | false) ;;
         *)
             echo "Warning: Invalid DEBUG value '$DEBUG', falling back to 'false'" >&2
             DEBUG="false"
@@ -46,7 +46,7 @@ config_load() {
         VERBOSE="true"
     fi
 
-    export APP_NAME DEBUG VERSION LOG_FILE TIMEOUT
+    export APP_NAME DEBUG VERSION LOG_FILE TIMEOUT VERBOSE
 }
 
 config_get() {

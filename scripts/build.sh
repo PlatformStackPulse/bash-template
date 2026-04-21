@@ -60,10 +60,11 @@ echo "  Build Time: $BUILD_TIME"
         -e '/^SRC_DIR=/d' \
         -e '/^LIB_DIR=/d' \
         -e '/^source /d' \
-        -e 's|source "\$SRC_DIR/commands/hello.sh"||' \
+        -e '/^[[:space:]]*source /d' \
+        -e '/^[[:space:]]*# shellcheck source/d' \
         "$PROJECT_ROOT/src/main.sh"
 
-} > "$OUTPUT"
+} >"$OUTPUT"
 
 chmod +x "$OUTPUT"
 echo "Built: $OUTPUT"
