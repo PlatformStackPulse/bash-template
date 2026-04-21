@@ -90,12 +90,14 @@ jobs:
           fetch-depth: 0
 
       - name: Conventional Commit PR Check
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
         run: |
           PATTERN='^(feat|fix|docs|style|refactor|perf|test|chore|build|ci|revert)(\(.+\))?!?:\s.{1,}$'
-          if ! [[ "${{ github.event.pull_request.title }}" =~ $PATTERN ]]; then
+          if ! [[ "$PR_TITLE" =~ $PATTERN ]]; then
             echo "PR title does not follow Conventional Commits format"
             echo "Expected format: feat: description, fix: description, etc."
-            echo "Your title: ${{ github.event.pull_request.title }}"
+            echo "Your title: $PR_TITLE"
             exit 1
           fi
           echo "PR title follows Conventional Commits format"

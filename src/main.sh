@@ -64,6 +64,10 @@ main() {
                 shift
                 ;;
             --log)
+                if [[ $# -lt 2 ]]; then
+                    log_error "--log requires a filename"
+                    exit 1
+                fi
                 LOG_FILE="$2"
                 export LOG_FILE
                 shift 2

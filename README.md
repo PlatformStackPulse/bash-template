@@ -238,7 +238,7 @@ make fmt           # Format with shfmt
 make security      # Run security checks
 make coverage      # Generate test coverage
 make clean         # Clean build artifacts
-make install       # Install dependencies (BATS, ShellCheck, shfmt)
+make install       # Check runtime dependencies
 make dev-setup     # Full development environment setup
 make changelog     # Regenerate CHANGELOG.md
 make version       # Show version
@@ -264,7 +264,7 @@ make all           # Run all targets
 
 - **ShellCheck** — Static analysis for shell scripts
 - **shfmt** — Consistent formatting
-- **CodeQL** — SIEM code analysis
+- **CodeQL** — SAST (Static Application Security Testing)
 - **Dependabot** — Automated dependency alerts
 
 ```bash

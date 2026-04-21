@@ -23,6 +23,10 @@ hello_run() {
     while [[ $# -gt 0 ]]; do
         case "$1" in
             -n | --name)
+                if [[ $# -lt 2 ]]; then
+                    log_error "--name requires a value"
+                    return "$ERR_INVALID_INPUT"
+                fi
                 name="$2"
                 shift 2
                 ;;
