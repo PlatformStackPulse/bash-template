@@ -24,7 +24,7 @@ Please include:
 This project uses the following security scanning tools:
 
 - **ShellCheck** — Static analysis for shell scripts (detects unsafe patterns)
-- **CodeQL** — SIEM code analysis and vulnerability detection
+- **CodeQL** — SAST (Static Application Security Testing) and vulnerability detection
 
 ### Running Locally
 
